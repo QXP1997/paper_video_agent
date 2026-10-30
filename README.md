@@ -1,11 +1,58 @@
+<div align="center">
+
 # Paper Video Agent
+
+**把研究论文 PDF 自动变成有来源依据的中文竖屏精讲视频。**
+
+[English](README_EN.md) | **简体中文**
+
+[![CI](https://github.com/QXP1997/paper_video_agent/actions/workflows/ci.yml/badge.svg)](https://github.com/QXP1997/paper_video_agent/actions/workflows/ci.yml)
+[![Python 3.11+](https://img.shields.io/badge/Python-3.11%2B-3776AB?logo=python&logoColor=white)](https://www.python.org/)
+[![Release](https://img.shields.io/github/v/tag/QXP1997/paper_video_agent?label=release)](https://github.com/QXP1997/paper_video_agent/tags)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
 > 不是把论文念一遍，而是把论文讲明白。
 
-输入研究论文 PDF，自动完成结构化解析、中文讲稿、事实审核、配音字幕和图表聚焦，低成本生成
-可直接发布的竖屏精讲视频。
+<a href="https://www.bilibili.com/video/BV1omeb6aE4z/">
+  <img src="docs/examples/overview.gif" width="300" alt="Paper Video Agent 动态效果预览">
+</a>
 
-> 当前版本为 `0.2.0`（Beta）。项目主要面向研究演示和内容创作，生成结果仍需人工核对。
+<sub>PDF 整页讲解、图表自动聚焦、中文配音与字幕；点击预览观看完整视频。</sub>
+
+</div>
+
+输入一篇研究论文 PDF，自动完成结构化解析、中文讲稿、来源页约束的事实审核、配音字幕、
+视觉时间轴和图表聚焦，最终生成可直接发布的 `9:16` 竖屏精讲视频。
+
+```text
+论文 PDF → 结构化解析 → 叙事与讲稿 → 事实审核 → 配音与字幕 → 图表聚焦 → MP4
+```
+
+- **端到端成片**：不只生成摘要或讲稿，直接输出高质量原片和社交平台压缩版。
+- **来源可追溯**：按章节限定证据页审核事实，并保留脚本、审核结果和视觉时间轴。
+- **面向真实迭代**：支持断点续跑、局部返修和分段预览，不必每次从头生成。
+- **成本可控**：作者使用 DeepSeek Flash 生成一条完整视频时，大模型调用费用实测低于 `¥1`。
+
+> 当前版本为 `0.2.0`（Beta），主要面向研究演示和内容创作。生成结果仍需对照原论文人工核对。
+
+## 快速开始
+
+```bash
+git clone https://github.com/QXP1997/paper_video_agent.git
+cd paper_video_agent
+python -m venv .venv
+```
+
+激活虚拟环境并安装项目后，复制 `.env.example` 为 `.env`，配置 DeepSeek 与 MinerU API Key：
+
+```powershell
+.\.venv\Scripts\Activate.ps1
+python -m pip install -e .
+Copy-Item .env.example .env
+python -m paper_video_agent --pdf "D:\papers\example.pdf"
+```
+
+macOS/Linux 用户以及完整环境要求见[安装](#安装)；第一次运行前请确保 FFmpeg、`ffprobe` 和中文字体可用。
 
 ## 项目特点
 
@@ -110,8 +157,8 @@ ffmpeg -filters
 ## 安装
 
 ```bash
-git clone <your-repository-url>
-cd paper-video-agent
+git clone https://github.com/QXP1997/paper_video_agent.git
+cd paper_video_agent
 python -m venv .venv
 ```
 

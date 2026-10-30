@@ -20,6 +20,7 @@ classifiers = [
     "Topic :: Multimedia :: Video",
     "Topic :: Scientific/Engineering :: Artificial Intelligence",
 ]
+
 dependencies = [
     "edge-tts>=7.0,<8.0",
     "httpx>=0.27,<1.0",
@@ -28,6 +29,12 @@ dependencies = [
     "pydantic>=2.10,<3.0",
     "PyMuPDF>=1.26,<2.0",
 ]
+
+[project.urls]
+Homepage = "https://github.com/QXP1997/paper_video_agent"
+Repository = "https://github.com/QXP1997/paper_video_agent"
+Documentation = "https://github.com/QXP1997/paper_video_agent#readme"
+Issues = "https://github.com/QXP1997/paper_video_agent/issues"
 
 [project.optional-dependencies]
 dev = [
